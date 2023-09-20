@@ -5,8 +5,9 @@ class LineTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hitText;
    final bool obscureText;
+   final TextInputType? keyboardType;
   const LineTextField(
-      {super.key, required this.hitText, required this.controller, this.obscureText = false});
+      {super.key, required this.hitText, required this.controller, this.obscureText = false, this.keyboardType});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +15,7 @@ class LineTextField extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextField(
         controller: controller,
+        keyboardType: keyboardType,
         obscureText: obscureText,
         style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
         decoration: InputDecoration(

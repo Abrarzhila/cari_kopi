@@ -1,7 +1,11 @@
+import 'package:cari_kopi_1/common/extenstion.dart';
 import 'package:cari_kopi_1/common_widget/line_textfield.dart';
 import 'package:cari_kopi_1/common_widget/round_button.dart';
+import 'package:cari_kopi_1/view/login/signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:cari_kopi_1/common/color_extenstion.dart';
+import 'package:cari_kopi_1/view/login/forgot_password_view.dart';
+import 'package:cari_kopi_1/view/login/otp_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
@@ -51,6 +55,7 @@ class _LoginViewState extends State<LoginView> {
                 LineTextField(
                   controller: txtEmail,
                   hitText: "Email",
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 SizedBox(
                   height: media.width * 0.14,
@@ -67,7 +72,14 @@ class _LoginViewState extends State<LoginView> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const ForgetPasswordView()));
+                        endEditing();
+                      },
                       child: Text(
                         "Lupa Password?",
                         textAlign: TextAlign.center,
@@ -84,9 +96,51 @@ class _LoginViewState extends State<LoginView> {
                 ),
                 RoundButton(
                   title: "Login",
-                  onPressed: () {},
+                  onPressed: () async {
+                    await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Otp_View()));
+                    endEditing();
+                  },
                   type: RoundButtonType.primary,
-                )
+                ),
+                SizedBox(
+                  height: media.width * 0.05,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Belum Punya Akun?",
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                          color: TColor.gray,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
+                    ),
+                    const SizedBox(
+                      width: 3.5,
+                    ),
+                    TextButton(
+                      onPressed: () async {
+                        await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const SignUpView()));
+                        endEditing();
+                      },
+                      child: Text(
+                        "SingUp?",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: TColor.primary,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  ],
+                ),
               ],
             ),
           ),
