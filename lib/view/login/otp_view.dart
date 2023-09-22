@@ -1,6 +1,7 @@
 import 'package:cari_kopi_1/common_widget/line_textfield.dart';
 import 'package:cari_kopi_1/common_widget/round_button.dart';
 import 'package:cari_kopi_1/view/login/signup_view.dart';
+import 'package:cari_kopi_1/view/main_tab/main_tab_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:cari_kopi_1/common/color_extenstion.dart';
 import 'package:cari_kopi_1/view/login/forgot_password_view.dart';
@@ -80,7 +81,15 @@ class _Otp_ViewState extends State<Otp_View> {
                 ),
                 RoundButton(
                   title: "Verify Now",
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.pushAndRemoveUntil(
+                        context,
+                        MaterialPageRoute<void>(
+                          builder: (BuildContext context) =>
+                              const MainTabView(),
+                        ),
+                        (route) => true);
+                  },
                   type: RoundButtonType.primary,
                 ),
               ],

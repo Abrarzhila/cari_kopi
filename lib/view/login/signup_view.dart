@@ -1,8 +1,10 @@
+import 'package:cari_kopi_1/common/extenstion.dart';
 import 'package:cari_kopi_1/common_widget/line_textfield.dart';
 import 'package:cari_kopi_1/common_widget/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:cari_kopi_1/common/color_extenstion.dart';
 import 'package:cari_kopi_1/view/login/forgot_password_view.dart';
+import 'package:cari_kopi_1/view/login/otp_view.dart';
 
 class SignUpView extends StatefulWidget {
   const SignUpView({super.key});
@@ -95,7 +97,13 @@ class _SignUpViewState extends State<SignUpView> {
                 ),
                 RoundButton(
                   title: "Sign Up",
-                  onPressed: () {},
+                  onPressed: () async{
+                         await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Otp_View()));
+                    endEditing();
+                  },
                   type: RoundButtonType.primary,
                 ),
               ],
